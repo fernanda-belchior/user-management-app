@@ -1,4 +1,4 @@
-package br.com.fernanda.usermanagement.domain;
+package br.com.fernanda.usermanagement.ejb.entity;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -16,13 +16,11 @@ import java.util.List;
 @Entity
 public class User implements Serializable {
 
-
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String name;
     private String email;
-    private String fiscalCode;
     private String password;
     @OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
     private List<Telephone> telephones;

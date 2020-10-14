@@ -6,15 +6,18 @@
              version="2.0">
 
     <persistence-unit name="user" transaction-type="RESOURCE_LOCAL">
-<!--    <provider>org.hibernate.jpa.HibernatePersistenceProvider</provider>-->
-        <class>br.com.fernanda.br.com.fernanda.usermanagement.entity.User</class>
-        <class>br.com.fernanda.br.com.fernanda.usermanagement.entity.Telephone</class>
+    <provider>org.hibernate.jpa.HibernatePersistenceProvider</provider>
+        <class>br.com.fernanda.usermanagement.ejb.entity.User</class>
+        <class>br.com.fernanda.usermanagement.ejb.entity.Telephone</class>
 
         <properties>
             <property name="javax.persistence.jdbc.driver" value="org.h2.Driver" />
             <property name="javax.persistence.jdbc.url" value="jdbc:h2:mem:user1"/>
             <property name="javax.persistence.jdbc.user" value="sa"/>
             <property name="javax.persistence.jdbc.password" value=""/>
+            <property name="corePoolSize" value="10" />
+            <property name="maxPoolSize" value="150" />
+            <property name="queueCapacity" value="11000" />
 
             <property name="hibernate.dialect" value="org.hibernate.dialect.H2Dialect"/>
             <property name="hibernate.show_sql" value="true"/>

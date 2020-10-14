@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html  lang="en" xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://java.sun.com/jsf/core">
+
+<h:head>
+    <title>User Management Application</title>
+    <link rel="stylesheet" type="text/css" href="theme.css"/>
+</h:head>
+
+<h:body>
+    <br /><br />
+    <h1>Users</h1>
+    <h:form style="margin:auto" id="list">
+        <p:dataTable border="2" style="margin: 0 auto;" var="user" value="#{UserMB.allUsers}" >
+            <p:column headerText="id">
+                <h:outputText value="#{user.id}"/>
+            </p:column>
+            <p:column headerText="Name">
+                <h:outputText value="#{user.name}"/>
+            </p:column>
+            <p:column headerText="email">
+                <h:outputText value="#{user.email}"/>
+            </p:column>
+        </p:dataTable>
+    </h:form><br /><br />
+
+
+    <h1>Add User</h1>
+    <h:form id="formAdd">
+         <h:panelGrid cellspacing="10">
+                Enter data:
+                <p:messages id="messagesAdd"/>
+                <h:outputText value="Name " />
+                <p:inputText placeholder="Name" value="#{UserMB.user.name}" size="40" required="true" requiredMessage= "Name is required"/>
+                <h:outputText value="Email " />
+                <p:inputText placeholder="E-mail" value="#{UserMB.user.email}" size="40" required="true" requiredMessage="E-mail is required"/>
+                <h:outputText value="Password " />
+                <p:password placeholder="Password" value="#{UserMB.user.password}" size="40" required="true" requiredMessage="Password is required"/>
+                <p:commandButton value="Add" icon="fa fa-fw fa-plus" action="#{UserMB.save}"/>-
+            </h:panelGrid>
+    </h:form>
+</h:body>
+</html>
+

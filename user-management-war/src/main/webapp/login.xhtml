@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html  lang="en" xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:p="http://primefaces.org/ui">
+
+<h:head>
+    <title>User Management Application</title>
+</h:head>
+
+<h:body>
+
+   <p:dialog visible="true" header="System Access" modal="true" resizable="false" style="padding:2px">
+        <h:panelGrid style="margin: 0 auto;"><h:outputText styleClass="fa fa-lock fa-5x"/></h:panelGrid>
+        <h:form id="formLogin">
+        <h:panelGrid cellspacing="10">
+            Enter with e-mail and password:
+            <p:messages id="messagesLogin"/>
+            <p:inputText placeholder="E-mail" value="#{LoginMB.email}" size="40" required="true" requiredMessage="E-mail is required"/>
+            <p:password placeholder="Password" value="#{LoginMB.password}" size="40" required="true" requiredMessage="Password is required"/>
+            <p:commandButton value="Log In" icon="ui-icon-star" action="#{LoginMB.login}" update="messagesLogin" ajax="false"/>
+            </h:panelGrid>
+        </h:form>
+        </p:dialog>
+
+</h:body>
+</html>
+

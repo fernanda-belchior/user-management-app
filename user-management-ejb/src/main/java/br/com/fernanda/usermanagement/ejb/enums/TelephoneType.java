@@ -1,12 +1,10 @@
-package br.com.fernanda.usermanagement.constant;
+package br.com.fernanda.usermanagement.ejb.enums;
 
 public enum TelephoneType {
-
 
     CELL_PHONE("CELL_PHONE"),
     COMMERCIAL("COMMERCIAL"),
     RESIDENTIAL("RESIDENTIAL");
-
 
     private String name;
 
@@ -17,8 +15,5 @@ public enum TelephoneType {
     public String getName(){
         return name;
     }
-
-
-
 
 }
