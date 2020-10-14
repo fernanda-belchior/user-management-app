@@ -36,7 +36,7 @@
             </p:column>
 
         </p:dataTable>
-        <p:commandButton value="Remove" icon="fa fa-fw fa-pencil" action="#{UserMB.remove(UserMB.user)}"/>
+        <p:commandButton value="Remove" icon="fa fa-fw fa-pencil" />
         <p:commandButton value="Update" icon="fa fa-pencil" update=":user:edit" oncomplete="PF('editDialog').show()">
             <f:setPropertyActionListener value="#{UserMB.user}" target="#{UserMB.user}"/>
         </p:commandButton>
