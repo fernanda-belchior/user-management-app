@@ -6,10 +6,12 @@
 
 <h:head>
     <title>User Management Application</title>
-    <link rel="stylesheet" type="text/css" href="theme.css"/>
 </h:head>
 
 <h:body>
+    <br /><br />
+    <p:commandButton value="Add and List" icon="fa fa-fw fa-pencil" action="#{UserMB.linkAdd}"/><br />
+    <p:commandButton value="Find and Edit" icon="fa fa-fw fa-pencil" action="#{UserMB.linkEdit}"/>
     <br /><br />
     <h1>Users</h1>
     <h:form style="margin:auto" id="list">
@@ -21,13 +23,13 @@
                 <h:outputText value="#{user.name}"/>
             </p:column>
             <p:column headerText="email">
-                <h:outputText value="#{user.email}"/>
+            <h:outputText value="#{user.email}"/>
             </p:column>
         </p:dataTable>
     </h:form><br /><br />
 
 
-    <h1>Add User</h1>
+<h1>Add User</h1>
     <h:form id="formAdd">
          <h:panelGrid cellspacing="10">
                 Enter data:
@@ -38,7 +40,7 @@
                 <p:inputText placeholder="E-mail" value="#{UserMB.user.email}" size="40" required="true" requiredMessage="E-mail is required"/>
                 <h:outputText value="Password " />
                 <p:password placeholder="Password" value="#{UserMB.user.password}" size="40" required="true" requiredMessage="Password is required"/>
-                <p:commandButton value="Add" icon="fa fa-fw fa-plus" action="#{UserMB.save}"/>-
+                <p:commandButton value="Add" icon="fa fa-fw fa-plus" action="#{UserMB.save}"/>
             </h:panelGrid>
     </h:form>
 </h:body>

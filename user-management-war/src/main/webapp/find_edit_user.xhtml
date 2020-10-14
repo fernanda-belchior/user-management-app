@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html  lang="en" xmlns="http://www.w3.org/1999/xhtml"
+       xmlns:h="http://java.sun.com/jsf/html"
+       xmlns:p="http://primefaces.org/ui"
+       xmlns:f="http://java.sun.com/jsf/core">
+
+<h:head>
+    <title>User Management Application</title>
+</h:head>
+
+<h:body>
+    <br /><br />
+    <p:commandButton value="Add and List" icon="fa fa-fw fa-pencil" action="#{UserMB.linkAdd}"/><br />
+    <p:commandButton value="Find and Edit" icon="fa fa-fw fa-pencil" action="#{UserMB.linkEdit}"/>
+    <br /><br />
+    <h1>Edit or Remove User</h1>
+    <h:form id="search">
+    <h:panelGrid cellspacing="10">
+    <p:messages id="messagesSearch"/>
+    <h:outputText value="Enter Id: " />
+    <p:inputText placeholder="Id" value="#{UserMB.user.id}" size="40" required="true" requiredMessage= "Id is required"/>
+        <p:commandButton value="Search" icon="fa fa-fw fa-plus" action="#{UserMB.findById}"/>
+    </h:panelGrid>
+    </h:form>
+
+    <h:form style="margin:auto" id="user">
+        <p:dataTable border="2" style="margin: 0 auto;" var="user" value="#{UserMB.user}" >
+            <p:column headerText="id">
+                <h:outputText value="#{user.id}"/>
+            </p:column>
+            <p:column headerText="Name">
+                <h:outputText value="#{user.name}"/>
+            </p:column>
+            <p:column headerText="email">
+                <h:outputText value="#{user.email}"/>
+            </p:column>
+
+        </p:dataTable>
+        <p:commandButton value="Remove" icon="fa fa-fw fa-pencil" action="#{UserMB.remove(UserMB.user)}"/>
+        <p:commandButton value="Update" icon="fa fa-pencil" update=":user:edit" oncomplete="PF('editDialog').show()">
+            <f:setPropertyActionListener value="#{UserMB.user}" target="#{UserMB.user}"/>
+        </p:commandButton>
+
+        <p:dialog header="Edit User" widgetVar="editDialog" modal="true" showEffect="fade" hideEffect="fade" resizable="false">
+        <p:outputPanel id="edit" style="text-align:center;">
+        <p:panelGrid  columns="2" rendered="#{not empty UserMB.user}" columnClasses="label,value">
+        <h:outputText value="Name: " />
+        <p:inputText value="#{UserMB.user.name}" />
+        <h:outputText value="Email: " />
+        <p:inputText value="#{UserMB.user.email}" />
+        </p:panelGrid>
+            <p:commandButton value="Update" icon="fa fa-fw fa-pencil" action="#{UserMB.update}"/>
+        </p:outputPanel>
+        </p:dialog>
+    </h:form><br /><br />
+</h:body>
+</html>
+

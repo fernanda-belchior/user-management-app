@@ -4,6 +4,7 @@ package br.com.fernanda.usermanagement.mb;
 import br.com.fernanda.usermanagement.ejb.bean.UserBean;
 import br.com.fernanda.usermanagement.ejb.entity.User;
 import br.com.fernanda.usermanagement.ejb.exception.UserManagementException;
+import br.com.fernanda.usermanagement.mb.constants.Link;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -41,15 +42,31 @@ public class UserMB {
                         (FacesMessage.SEVERITY_INFO,
                                 "User Added!",
                                 "Success!"));
+
         this.refresh();
-        return "/user.xhtml?faces-redirect=true";
+        return Link.ADD_LIST;
     }
 
 
-    public String remove(){
-        userBean.save(this.user);
-        return "/user.xhtml?faces-redirect=true";
+    public String remove(User user )  {
+        this.userBean.remove(user.getId());
+        this.refresh();
+        return Link.ADD_LIST;
     }
+
+    public String update( ){
+        this.userBean.save(this.user);
+        this.refresh();
+        this.user = new User();
+        return Link.ADD_LIST;
+    }
+
+    public String findById(){
+        this.user = this.userBean.findById(this.user.getId());
+        this.refresh();
+        return Link.FIND_EDIT;
+    }
+
 
     public List<User> getAllUsers() throws UserManagementException {
         return this.userBean.findAll();
@@ -63,6 +80,14 @@ public class UserMB {
         context.setViewRoot(viewRoot);
         context.renderResponse();
     }
+
+    public String linkAdd(){
+        return Link.ADD_LIST;
+    }
+    public String linkEdit(){
+        return Link.FIND_EDIT;
+    }
+
 
 
 }

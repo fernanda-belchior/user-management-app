@@ -3,6 +3,7 @@ package br.com.fernanda.usermanagement.mb;
 import br.com.fernanda.usermanagement.ejb.bean.UserBean;
 import br.com.fernanda.usermanagement.ejb.entity.User;
 import br.com.fernanda.usermanagement.ejb.exception.UserManagementException;
+import br.com.fernanda.usermanagement.mb.constants.Link;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -48,7 +49,7 @@ public class LoginMB {
 
         }
 
-        return "/user.xhtml?faces-redirect=true";
+        return Link.ADD_LIST;
 
     }
 }

@@ -27,7 +27,7 @@ public class Telephone implements Serializable {
 
     @Override
     public String toString() {
-        return "Telephone{}";
+        return this.getTelephoneType()+": ("+this.getDdd()+")"+number;
     }
 
 }
